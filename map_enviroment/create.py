@@ -18,16 +18,16 @@ def create_map(x, y):
 
 
 if __name__ == '__main__':
-    disq = 16
+    dim_sq = 16
 
     def randr(max):
         return randrange(0, max)
 
-    x = randr(disq)
-    y = randr(disq)
-    b = randr(disq)
+    x = randr(dim_sq)
+    y = randr(dim_sq)
+    b = randr(dim_sq)
 
-    _map = create_map(disq, disq)
+    _map = create_map(dim_sq, dim_sq)
     final = set_item(x, y, _map)
     final = place_bbot(b, _map)
 
