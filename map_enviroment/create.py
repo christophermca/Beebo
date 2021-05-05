@@ -1,15 +1,17 @@
 from random import randrange
 import numpy as np
-bot = u'\u29BF'
 
 
-def place_bbot(y, map_env):
-    map_env[0][y] = -1
-    return map_env
+def place_pkg():
+    return [randr(dim_sq), randr(dim_sq), randr(dim_sq)]
 
 
-def set_item(x, y, map_env):
-    map_env[x][y] = 2
+def randr(max):
+    return randrange(0, max)
+
+
+def set_item(x, y, item, map_env):
+    map_env[y][x] = item
     return map_env
 
 
@@ -17,19 +19,21 @@ def create_map(x, y):
     return np.ones((x, y))
 
 
+# TODO move this to Beebo after testing
+
+
 if __name__ == '__main__':
     dim_sq = 16
-
-    def randr(max):
-        return randrange(0, max)
-
-    x = randr(dim_sq)
-    y = randr(dim_sq)
-    b = randr(dim_sq)
-
     _map = create_map(dim_sq, dim_sq)
-    final = set_item(x, y, _map)
-    final = place_bbot(b, _map)
+    _pkg = 2
+    x, y, bot = place_pkg()
 
-    print(x, y)
-    print(final)
+    set_item(x, y, _pkg, _map)
+    map_output = set_item(0, bot, -1, _map)
+
+    # TODO move this to Beebo after testing
+    # print(find_pkg(bot, _pkg, map_output))
+
+    # print('item was placed at %d X %d' % (x, y))
+    # print('BOT @ row %d' % (bot))
+    # print('Map Environment: \n\n %s' % (map_output))
