@@ -1,5 +1,7 @@
 import unittest
-from .context import Beebo
+from context import Beebo
+from map_enviroment import create_map, set_item
+_map = create_map(16, 16)
 
 
 class Test_Beebo(unittest.TestCase):
@@ -8,7 +10,8 @@ class Test_Beebo(unittest.TestCase):
     """
 
     def setUp(self):
-        self.beebo = Beebo()
+        _map = create_map(16, 16)
+        self.beebo = Beebo(_map)
 
     def tareDown(self):
         self.beebo = None
@@ -27,7 +30,7 @@ class Test_Beebo_Handling_Items(unittest.TestCase):
     """
 
     def setUp(self):
-        self.beebo = Beebo()
+        self.beebo = Beebo(_map)
 
     def tareDown(self):
         self.beebo = None
